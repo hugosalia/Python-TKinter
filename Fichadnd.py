@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from tkinter import *
 from tkinter import ttk
 import math
@@ -20,7 +22,7 @@ racas = ['Anão','Draconato','Elfo','Humano','Meio-elfo','Meio-orc','Tiferino']
 classes = ['Bárbaro','Bruxo','Clérigo','Druida','Feiticeiro','Mago','Monge','Paladino','Patrulheiro']
 antec = ['Acólito', 'Artesão de Guilda', 'Artista', 'Charlatão', 'Criança de Rua', 'Criminoso', 'Eremita',
  'Forasteiro', 'Herói do Povo','Marinheiro', 'Nobre', 'Sábio', 'Soldado', 'Customizado']
-alinha = ['Ordeiro Bom', 'Ordeiro Neutro', 'Ordeiro Mau', 'Neutro Bom', 'Neutro', 'Neutro Mau', 
+alinha = ['Ordeiro Bom', 'Ordeiro Neutro', 'Ordeiro Mau', 'Neutro Bom', 'Neutro', 'Neutro Mau',
  'Caótico Bom', 'Caótico Neutro', 'Caótico Mau']
 
 lista_tudo = [racas, classes, antec, alinha]
@@ -33,11 +35,11 @@ matriz = [(0,0), (0,1), (1,0), (1,1)]
 for i in range(len(lista_tudo)):
 	txt = Label (root, text="Escolha "+lista_txt_tudo[i]+": ")
 	txt.grid(row=2+2*matriz[i][0], column=matriz[i][1], padx=5, sticky=W)
-	#var[i] = StringVar(root, lista_tudo[i][0]) 
-	#sel = OptionMenu(root, var[i], *lista_tudo[i]) 
+	#var[i] = StringVar(root, lista_tudo[i][0])
+	#sel = OptionMenu(root, var[i], *lista_tudo[i])
 	var[i] = ttk.Combobox(root, values = lista_tudo[i])
 	var[i].config(width=15, font=('Helvetica',10))
-	var[i].grid(row=3+2*matriz[i][0], column=matriz[i][1], padx=5, sticky=W) 
+	var[i].grid(row=3+2*matriz[i][0], column=matriz[i][1], padx=5, sticky=W)
 
 
 txt_atr = Label (root, text="Informe o valor de seus atributos:")
@@ -93,31 +95,31 @@ def botao_ir_click():
 	global modificadores
 	modificadores = [
 		modif(atributos[0][1]),
-		modif(atributos[1][1]), 
-		modif(atributos[2][1]), 
-		modif(atributos[3][1]), 
-		modif(atributos[4][1]), 
+		modif(atributos[1][1]),
+		modif(atributos[2][1]),
+		modif(atributos[3][1]),
+		modif(atributos[4][1]),
 		modif(atributos[5][1])
 	]
 	global pericias
 	pericias = [
-		['Acrobacia (Des)', modificadores[1]], 
-		['Arcanismo (Int)', modificadores[3]], 
-		['Atletismo (For)', modificadores[0]], 
-		['Atuação (Car)', modificadores[5]], 
-		['Enganação (Car)', modificadores[5]], 
-		['Furtividade (Des)', modificadores[1]], 
-		['História (Int)', modificadores[3]], 
-		['Intimidação (Car)', modificadores[5]], 
-		['Intuição (Sab)', modificadores[4]], 
-		['Lidar com Animais (Sab)', modificadores[4]], 
-		['Medicina (Sab)', modificadores[4]], 
-		['Natureza (Int)', modificadores[3]], 
-		['Percepção (Sab)', modificadores[4]], 
-		['Persuasão (Car)', modificadores[5]], 
-		['Prestidigitação (Des)', modificadores[1]], 
-		['Religião (Int)', modificadores[3]], 
-		['Sobrevivência (Sab)', modificadores[4]], 
+		['Acrobacia (Des)', modificadores[1]],
+		['Arcanismo (Int)', modificadores[3]],
+		['Atletismo (For)', modificadores[0]],
+		['Atuação (Car)', modificadores[5]],
+		['Enganação (Car)', modificadores[5]],
+		['Furtividade (Des)', modificadores[1]],
+		['História (Int)', modificadores[3]],
+		['Intimidação (Car)', modificadores[5]],
+		['Intuição (Sab)', modificadores[4]],
+		['Lidar com Animais (Sab)', modificadores[4]],
+		['Medicina (Sab)', modificadores[4]],
+		['Natureza (Int)', modificadores[3]],
+		['Percepção (Sab)', modificadores[4]],
+		['Persuasão (Car)', modificadores[5]],
+		['Prestidigitação (Des)', modificadores[1]],
+		['Religião (Int)', modificadores[3]],
+		['Sobrevivência (Sab)', modificadores[4]],
 	]
 	global level
 	level = 1;
@@ -173,7 +175,7 @@ def botao_ir_click():
 	for i in range(len(atributos)):
 		var_s.append(IntVar())
 		#Precisa colocar c=i pra ele pegar o valor correto na função. Se não ele pega o útlimo i apenas.
-		plot_salvag.append(Checkbutton(frame_salvag, text=modificadores[i],padx=5,variable=var_s[i], onvalue=1 , offvalue=0, command=lambda c=i: click_salvag(c)))
+		plot_salvag.append(Checkbutton(frame_salvag, text=atributos[i][0],padx=5,variable=var_s[i], onvalue=1 , offvalue=0, command=lambda c=i: click_salvag(c)))
 		plot_mod_s.append(Label(frame_salvag, text=ver_sinal(modificadores[i]), padx=5))
 		plot_igual = Label(frame_salvag, text='=')
 		plot_salvag[i].grid(row=i, column=0,sticky=W)
@@ -215,7 +217,7 @@ botao_ir.grid(row=15, column=0, columnspan=2, sticky=W)
 
 #resumo = LabelFrame(root, text="Sua Ficha", padx=10, pady=10)
 #def botao_click():
-	
+
 #	global resumo
 #	resumo.destroy()
 #	resumo = LabelFrame(root, text="Sua Ficha", padx=10, pady=10)
